@@ -42,6 +42,22 @@
 [ext_resource type="Texture2D" uid="uid://b57u8kukqxvpj" path="res://Assets/Sprites/Characters/Player/Sliding/Sliding_005.png" id="37_ha44i"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDashState.cs" id="40_38bak"]
 
+[sub_resource type="Animation" id="Animation_ec7xr"]
+resource_name = "Dash"
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.832424),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_c03kn"), ExtResource("33_6qulb"), ExtResource("34_0xj1x"), ExtResource("35_ixhln"), ExtResource("36_7esoa"), ExtResource("37_ha44i")]
+}
+
 [sub_resource type="Animation" id="Animation_qj85w"]
 resource_name = "Idle"
 loop_mode = 1
@@ -76,22 +92,6 @@ tracks/0/keys = {
 "values": [ExtResource("20_bywix"), ExtResource("21_kd8vj"), ExtResource("22_vdge7"), ExtResource("23_0wkh0"), ExtResource("24_qotsv"), ExtResource("1_hv3m4"), ExtResource("25_a3wfa"), ExtResource("26_hagxs"), ExtResource("27_jci62"), ExtResource("28_d7p00"), ExtResource("29_5v687"), ExtResource("30_lhsje")]
 }
 
-[sub_resource type="Animation" id="Animation_ec7xr"]
-resource_name = "Dash"
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.832424),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("32_c03kn"), ExtResource("33_6qulb"), ExtResource("34_0xj1x"), ExtResource("35_ixhln"), ExtResource("36_7esoa"), ExtResource("37_ha44i")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xoteg"]
 _data = {
 "Dash": SubResource("Animation_ec7xr"),
@@ -99,15 +99,15 @@ _data = {
 "Move": SubResource("Animation_r27b1")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayerNode", "sprite3DNode", "stateMachineNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "Sprite3DNode", "StateMachineNode")]
 script = ExtResource("1_f52qr")
-animationPlayerNode = NodePath("AnimationPlayer")
-sprite3DNode = NodePath("Sprite3D")
-stateMachineNode = NodePath("StateMachine")
+AnimationPlayerNode = NodePath("AnimationPlayer")
+Sprite3DNode = NodePath("Sprite3D")
+StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 0
-texture = ExtResource("2_ukslh")
+texture = ExtResource("32_c03kn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
