@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://wg55g56a6yfb"]
+[gd_scene load_steps=112 format=3 uid="uid://wg55g56a6yfb"]
 
 [ext_resource type="Texture2D" uid="uid://ca6salm3p6kie" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="1_fle1x"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_vddrj"]
@@ -47,7 +47,6 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="45_4rp4t"]
 [ext_resource type="Texture2D" uid="uid://rds26uus6i82" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_000.png" id="45_5j24c"]
 [ext_resource type="Texture2D" uid="uid://bwenss3pv68yh" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_001.png" id="46_krgju"]
-[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyMoveState.cs" id="46_rpsqa"]
 [ext_resource type="Texture2D" uid="uid://jml3kyvtglxf" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_002.png" id="47_gmghe"]
 [ext_resource type="Texture2D" uid="uid://cmno7k3klem15" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_003.png" id="48_y6qt1"]
 [ext_resource type="Texture2D" uid="uid://bovbrl6g1uhxd" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_004.png" id="49_ajw38"]
@@ -226,7 +225,7 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wfks"]
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "Sprite3DNode", "StateMachineNode")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "Sprite3DNode", "StateMachineNode", "AgentNode")]
 collision_layer = 4
 collision_mask = 3
 floor_max_angle = 1.55334
@@ -235,6 +234,7 @@ script = ExtResource("1_vddrj")
 AnimationPlayerNode = NodePath("AnimationPlayer")
 Sprite3DNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
+AgentNode = NodePath("NavigationAgent3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
@@ -247,14 +247,11 @@ libraries = {
 }
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("101_q50sl")]
-currentState = NodePath("ReturnState")
-states = [NodePath("IdleState"), NodePath("MoveState"), NodePath("ReturnState")]
+currentState = NodePath("IdleState")
+states = [NodePath("IdleState"), NodePath("ReturnState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("45_4rp4t")
-
-[node name="MoveState" type="Node" parent="StateMachine"]
-script = ExtResource("46_rpsqa")
 
 [node name="ReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("104_53qge")
@@ -262,3 +259,6 @@ script = ExtResource("104_53qge")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)
 shape = SubResource("CapsuleShape3D_8wfks")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true

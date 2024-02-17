@@ -5,10 +5,7 @@ public partial class EnemyIdleState : EnemyState
 {
     public override void _PhysicsProcess(double delta)
     {
-        if (characterNode.direction != Vector2.Zero)
-        {
-            characterNode.StateMachineNode.SwitchState<EnemyMoveState>();
-        }
+            characterNode.StateMachineNode.SwitchState<EnemyReturnState>();
     }
 
     protected override void EnterState()

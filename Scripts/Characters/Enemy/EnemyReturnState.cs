@@ -17,11 +17,13 @@ public partial class EnemyReturnState : EnemyState
     protected override void EnterState()
     {
         characterNode.AnimationPlayerNode.Play(GameConstants.ANIM_MOVE);
+
+        characterNode.AgentNode.TargetPosition = destination;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (characterNode.GlobalPosition == destination)
+        if (characterNode.AgentNode.IsNavigationFinished())
         {
             GD.Print("Reached destintation");
             return;
