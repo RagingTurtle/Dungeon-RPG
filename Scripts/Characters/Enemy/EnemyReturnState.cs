@@ -12,12 +12,23 @@ public partial class EnemyReturnState : EnemyState
         Vector3 localPos = characterNode.PathNode.Curve.GetPointPosition(0);
         Vector3 globalPos = characterNode.PathNode.GlobalPosition;
         destination = localPos + globalPos;
- 
-        characterNode.GlobalPosition = destination;
     }
 
     protected override void EnterState()
     {
         characterNode.AnimationPlayerNode.Play(GameConstants.ANIM_MOVE);
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (characterNode.GlobalPosition == destination)
+        {
+            GD.Print("Reached destintation");
+            return;
+        }
+
+        characterNode.Velocity = characterNode.GlobalPosition.DirectionTo(destination);
+
+        characterNode.MoveAndSlide();
     }
 }
