@@ -44,7 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://xbo0u2qvl1yt" path="res://Assets/Sprites/Characters/Enemy Knight/Move/0_Demons_of_Darkness_Walking_021.png" id="41_p6w7s"]
 [ext_resource type="Texture2D" uid="uid://bvkkmx26avd2k" path="res://Assets/Sprites/Characters/Enemy Knight/Move/0_Demons_of_Darkness_Walking_022.png" id="42_3iv06"]
 [ext_resource type="Texture2D" uid="uid://dxuggrr77iy1l" path="res://Assets/Sprites/Characters/Enemy Knight/Move/0_Demons_of_Darkness_Walking_023.png" id="43_dsfhp"]
-[ext_resource type="Script" path="res://Scripts/Characters/StateMachine.cs" id="44_op14l"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyIdleState.cs" id="45_4rp4t"]
 [ext_resource type="Texture2D" uid="uid://rds26uus6i82" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_000.png" id="45_5j24c"]
 [ext_resource type="Texture2D" uid="uid://bwenss3pv68yh" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_001.png" id="46_krgju"]
@@ -103,6 +102,7 @@
 [ext_resource type="Texture2D" uid="uid://twxfyxg850e5" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_009.png" id="98_dlthu"]
 [ext_resource type="Texture2D" uid="uid://ddxn8q5rfr15c" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_010.png" id="99_u5ed4"]
 [ext_resource type="Texture2D" uid="uid://1lg74icbljf8" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_011.png" id="100_iwtyg"]
+[ext_resource type="PackedScene" uid="uid://cmw1005384c48" path="res://Scenes/Characters/state_machine.tscn" id="101_q50sl"]
 
 [sub_resource type="Animation" id="Animation_fycpy"]
 resource_name = "Idle"
@@ -225,7 +225,7 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wfks"]
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "Sprite3DNode", "StateMachineNode")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "Sprite3DNode")]
 collision_layer = 4
 collision_mask = 3
 floor_max_angle = 1.55334
@@ -233,11 +233,10 @@ floor_snap_length = 0.2
 script = ExtResource("1_vddrj")
 AnimationPlayerNode = NodePath("AnimationPlayer")
 Sprite3DNode = NodePath("Sprite3D")
-StateMachineNode = NodePath("StateMachine")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
-texture = ExtResource("19_egcw8")
+texture = ExtResource("11_uv4gc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite3D")
@@ -245,8 +244,7 @@ libraries = {
 "": SubResource("AnimationLibrary_o6bjx")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("currentState", "states")]
-script = ExtResource("44_op14l")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("101_q50sl")]
 currentState = NodePath("IdleState")
 states = [NodePath("IdleState"), NodePath("MoveState")]
 
