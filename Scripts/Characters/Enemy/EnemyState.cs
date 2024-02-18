@@ -12,7 +12,7 @@ public abstract partial class EnemyState : CharacterState
     }
 
     protected void Move()
-    {
+    {   characterNode.AgentNode.GetNextPathPosition();
         characterNode.Velocity = characterNode.GlobalPosition.DirectionTo(destination);
         GD.Print(characterNode.GlobalPosition);
         GD.Print(destination);
