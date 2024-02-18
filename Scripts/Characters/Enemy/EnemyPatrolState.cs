@@ -3,7 +3,11 @@ using System;
 
 public partial class EnemyPatrolState : EnemyState
 {
+    [Export] private Timer idleTimerNode;
+    [Export(PropertyHint.Range, "0, 20, 0.1")] private float maxIdleTime = 4;
+
     private int pointIndex = 0;
+
     protected override void EnterState()
     {
         characterNode.AnimationPlayerNode.Play(GameConstants.ANIM_MOVE);
@@ -14,18 +18,32 @@ public partial class EnemyPatrolState : EnemyState
         characterNode.AgentNode.TargetPosition = destination;
 
         characterNode.AgentNode.NavigationFinished += HandleNavigationFinished;
+        idleTimerNode.Timeout += HandleTimeout;
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!idleTimerNode.IsStopped()) { return;}
         Move();
     }
 
     private void HandleNavigationFinished()
     {
+        characterNode.AnimationPlayerNode.Play(GameConstants.ANIM_IDLE);
+
+        RandomNumberGenerator rng = new();
+        idleTimerNode.WaitTime = rng.RandfRange(0, maxIdleTime);
+
+        idleTimerNode.Start();
+    }
+
+    private void HandleTimeout()
+    {
+        characterNode.AnimationPlayerNode.Play(GameConstants.ANIM_MOVE);
+
         pointIndex = Mathf.PosMod(pointIndex + 1, characterNode.PathNode.Curve.PointCount);
 
         destination = GetPointsGlobalPosition(pointIndex);
-        characterNode.AgentNode.TargetPosition = destination;
+        characterNode.AgentNode.TargetPosition = destination;    
     }
 }

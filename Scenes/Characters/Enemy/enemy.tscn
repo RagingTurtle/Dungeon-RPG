@@ -257,8 +257,12 @@ script = ExtResource("45_4rp4t")
 [node name="ReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("104_53qge")
 
-[node name="PatrolState" type="Node" parent="StateMachine"]
+[node name="PatrolState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idleTimerNode")]
 script = ExtResource("104_si25v")
+idleTimerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/PatrolState"]
+one_shot = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)

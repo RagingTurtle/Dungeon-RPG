@@ -21,7 +21,6 @@ public partial class EnemyReturnState : EnemyState
     {
         if (characterNode.AgentNode.IsNavigationFinished())
         {
-            GD.Print("Reached destintation");
             characterNode.StateMachineNode.SwitchState<EnemyPatrolState>();
             return;
         }
