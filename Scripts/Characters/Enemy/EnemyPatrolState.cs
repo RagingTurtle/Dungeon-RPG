@@ -21,6 +21,12 @@ public partial class EnemyPatrolState : EnemyState
         idleTimerNode.Timeout += HandleTimeout;
     }
 
+    protected override void ExitState()
+    {
+        characterNode.AgentNode.NavigationFinished -= HandleNavigationFinished;
+        idleTimerNode.Timeout -= HandleTimeout;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (!idleTimerNode.IsStopped()) { return;}
