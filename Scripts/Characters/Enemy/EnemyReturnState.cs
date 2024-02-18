@@ -3,15 +3,11 @@ using System;
 
 public partial class EnemyReturnState : EnemyState
 {
-    private Vector3 destination;
-
-    public override void _Ready()
+     public override void _Ready()
     {
         base._Ready();
 
-        Vector3 localPos = characterNode.PathNode.Curve.GetPointPosition(0);
-        Vector3 globalPos = characterNode.PathNode.GlobalPosition;
-        destination = localPos + globalPos;
+        destination = GetPointsGlobalPosition(0);
     }
 
     protected override void EnterState()
@@ -26,11 +22,10 @@ public partial class EnemyReturnState : EnemyState
         if (characterNode.AgentNode.IsNavigationFinished())
         {
             GD.Print("Reached destintation");
+            characterNode.StateMachineNode.SwitchState<EnemyPatrolState>();
             return;
         }
 
-        characterNode.Velocity = characterNode.GlobalPosition.DirectionTo(destination);
-
-        characterNode.MoveAndSlide();
+        Move();
     }
 }

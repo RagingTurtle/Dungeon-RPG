@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://wg55g56a6yfb"]
+[gd_scene load_steps=113 format=3 uid="uid://wg55g56a6yfb"]
 
 [ext_resource type="Texture2D" uid="uid://ca6salm3p6kie" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="1_fle1x"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_vddrj"]
@@ -103,40 +103,7 @@
 [ext_resource type="Texture2D" uid="uid://1lg74icbljf8" path="res://Assets/Sprites/Characters/Enemy Knight/TakeHit/0_Demons_of_Darkness_Hurt_011.png" id="100_iwtyg"]
 [ext_resource type="PackedScene" uid="uid://cmw1005384c48" path="res://Scenes/Characters/state_machine.tscn" id="101_q50sl"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyReturnState.cs" id="104_53qge"]
-
-[sub_resource type="Animation" id="Animation_fycpy"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.0555556
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333, 0.388889, 0.444444, 0.5, 0.555556, 0.611111, 0.668021, 0.722222, 0.777778, 0.833333, 0.888889, 0.944444),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("1_fle1x"), ExtResource("4_pg7am"), ExtResource("5_g7ye2"), ExtResource("6_y3jq7"), ExtResource("7_1si4n"), ExtResource("8_rukl1"), ExtResource("9_dln7r"), ExtResource("10_02ssu"), ExtResource("11_uv4gc"), ExtResource("12_c1rrb"), ExtResource("13_7qfit"), ExtResource("14_44se1"), ExtResource("15_uuxh3"), ExtResource("2_dyllb"), ExtResource("16_0ifbg"), ExtResource("17_3jte8"), ExtResource("18_lbnym"), ExtResource("19_egcw8")]
-}
-
-[sub_resource type="Animation" id="Animation_bevd4"]
-resource_name = "Move"
-loop_mode = 1
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333, 0.875, 0.916667, 0.958333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("20_kicy2"), ExtResource("21_egobu"), ExtResource("22_c7io0"), ExtResource("23_gp2ja"), ExtResource("24_cblfm"), ExtResource("25_ivitq"), ExtResource("26_dkcb8"), ExtResource("27_uwhhf"), ExtResource("28_2f5fn"), ExtResource("29_u5g6k"), ExtResource("30_tmmms"), ExtResource("31_dsxox"), ExtResource("32_jp1ld"), ExtResource("33_n3q7k"), ExtResource("34_b2ip8"), ExtResource("35_tb8t7"), ExtResource("36_nbsq5"), ExtResource("37_8vvxp"), ExtResource("38_c27ma"), ExtResource("39_ltyvn"), ExtResource("40_p5ghq"), ExtResource("41_p6w7s"), ExtResource("42_3iv06"), ExtResource("43_dsfhp")]
-}
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_si25v"]
 
 [sub_resource type="Animation" id="Animation_a2gh4"]
 resource_name = "Attack"
@@ -182,9 +149,10 @@ tracks/1/keys = {
 "values": [0.0025, 0.0025, 0.0075]
 }
 
-[sub_resource type="Animation" id="Animation_l1mde"]
-resource_name = "TakeHit"
-step = 0.0833333
+[sub_resource type="Animation" id="Animation_fycpy"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0555556
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -192,10 +160,27 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333, 0.388889, 0.444444, 0.5, 0.555556, 0.611111, 0.668021, 0.722222, 0.777778, 0.833333, 0.888889, 0.944444),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("89_qm1nl"), ExtResource("90_hmnri"), ExtResource("91_0yabe"), ExtResource("92_nu51s"), ExtResource("93_j4rbm"), ExtResource("94_b6opb"), ExtResource("95_qms5l"), ExtResource("96_5c8i3"), ExtResource("97_lkkak"), ExtResource("98_dlthu"), ExtResource("99_u5ed4"), ExtResource("100_iwtyg")]
+"values": [ExtResource("1_fle1x"), ExtResource("4_pg7am"), ExtResource("5_g7ye2"), ExtResource("6_y3jq7"), ExtResource("7_1si4n"), ExtResource("8_rukl1"), ExtResource("9_dln7r"), ExtResource("10_02ssu"), ExtResource("11_uv4gc"), ExtResource("12_c1rrb"), ExtResource("13_7qfit"), ExtResource("14_44se1"), ExtResource("15_uuxh3"), ExtResource("2_dyllb"), ExtResource("16_0ifbg"), ExtResource("17_3jte8"), ExtResource("18_lbnym"), ExtResource("19_egcw8")]
+}
+
+[sub_resource type="Animation" id="Animation_bevd4"]
+resource_name = "Move"
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333, 0.75, 0.791667, 0.833333, 0.875, 0.916667, 0.958333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("20_kicy2"), ExtResource("21_egobu"), ExtResource("22_c7io0"), ExtResource("23_gp2ja"), ExtResource("24_cblfm"), ExtResource("25_ivitq"), ExtResource("26_dkcb8"), ExtResource("27_uwhhf"), ExtResource("28_2f5fn"), ExtResource("29_u5g6k"), ExtResource("30_tmmms"), ExtResource("31_dsxox"), ExtResource("32_jp1ld"), ExtResource("33_n3q7k"), ExtResource("34_b2ip8"), ExtResource("35_tb8t7"), ExtResource("36_nbsq5"), ExtResource("37_8vvxp"), ExtResource("38_c27ma"), ExtResource("39_ltyvn"), ExtResource("40_p5ghq"), ExtResource("41_p6w7s"), ExtResource("42_3iv06"), ExtResource("43_dsfhp")]
 }
 
 [sub_resource type="Animation" id="Animation_4pqp4"]
@@ -211,6 +196,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0025]
+}
+
+[sub_resource type="Animation" id="Animation_l1mde"]
+resource_name = "TakeHit"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("89_qm1nl"), ExtResource("90_hmnri"), ExtResource("91_0yabe"), ExtResource("92_nu51s"), ExtResource("93_j4rbm"), ExtResource("94_b6opb"), ExtResource("95_qms5l"), ExtResource("96_5c8i3"), ExtResource("97_lkkak"), ExtResource("98_dlthu"), ExtResource("99_u5ed4"), ExtResource("100_iwtyg")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6bjx"]
@@ -248,13 +249,16 @@ libraries = {
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("101_q50sl")]
 currentState = NodePath("IdleState")
-states = [NodePath("IdleState"), NodePath("ReturnState")]
+states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("45_4rp4t")
 
 [node name="ReturnState" type="Node" parent="StateMachine"]
 script = ExtResource("104_53qge")
+
+[node name="PatrolState" type="Node" parent="StateMachine"]
+script = ExtResource("104_si25v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)

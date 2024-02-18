@@ -94,6 +94,10 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00879, 1.33072, 0)
 curve = SubResource("Curve3D_6sslr")
 
+[node name="Enemy" parent="Enemies/Path3D0" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_tpf6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68929, 0.48461, 0)
+PathNode = NodePath("..")
+
 [node name="Path3D1" type="Path3D" parent="Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3932, 1.33072, 0)
 curve = SubResource("Curve3D_v7keq")
@@ -125,10 +129,6 @@ curve = SubResource("Curve3D_qrntc")
 [node name="Path3D8" type="Path3D" parent="Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5129, 5.18395, -2.41437)
 curve = SubResource("Curve3D_6kdqf")
-
-[node name="Enemy" parent="Enemies/Path3D8" node_paths=PackedStringArray("PathNode") instance=ExtResource("4_tpf6h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1934, -3.36862, 2.41437)
-PathNode = NodePath("..")
 
 [node name="Environment" type="Node3D" parent="."]
 
