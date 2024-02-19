@@ -12,11 +12,15 @@ public partial class EnemyChaseState : EnemyState
         target = characterNode.ChaseAreaNode.GetOverlappingBodies().First() as CharacterBody3D;
 
         chaseTimerNode.Timeout += HandleTimeout;
+        characterNode.AttackAreaNode.BodyEntered += HandleAttackAreaBodyEntered;
+        characterNode.ChaseAreaNode.BodyExited += HandleChaseAreaBodyExited;
     }
 
     protected override void ExitState()
     {
         chaseTimerNode.Timeout -= HandleTimeout;
+        characterNode.AttackAreaNode.BodyEntered -= HandleAttackAreaBodyEntered;
+        characterNode.ChaseAreaNode.BodyExited -= HandleChaseAreaBodyExited;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -28,5 +32,15 @@ public partial class EnemyChaseState : EnemyState
     {
         destination = target.GlobalPosition;
         characterNode.AgentNode.TargetPosition = destination;   
+    }
+
+    private void HandleAttackAreaBodyEntered(Node3D body)
+    {
+        characterNode.StateMachineNode.SwitchState<EnemyAttackState>();
+    }
+
+    private void HandleChaseAreaBodyExited(Node3D body)
+    {
+        characterNode.StateMachineNode.SwitchState<EnemyReturnState>();
     }
 }

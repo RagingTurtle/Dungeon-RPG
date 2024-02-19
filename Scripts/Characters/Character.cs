@@ -13,6 +13,8 @@ public abstract partial class Character : CharacterBody3D
     [Export] public NavigationAgent3D AgentNode {get; private set;}
     [Export] public Area3D ChaseAreaNode {get; private set;}
 
+    [Export] public Area3D AttackAreaNode {get; private set;}
+
     public Vector2 direction = new();
 
     public void Flip()
