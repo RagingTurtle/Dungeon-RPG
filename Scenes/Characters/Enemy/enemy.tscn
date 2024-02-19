@@ -269,8 +269,13 @@ idleTimerNode = NodePath("Timer")
 [node name="Timer" type="Timer" parent="StateMachine/PatrolState"]
 one_shot = true
 
-[node name="ChaseState" type="Node" parent="StateMachine"]
+[node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("chaseTimerNode")]
 script = ExtResource("105_qgvxu")
+chaseTimerNode = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/ChaseState"]
+wait_time = 0.5
+autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)
