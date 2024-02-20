@@ -1,10 +1,12 @@
 using Godot;
 using System;
+using System.Xml.XPath;
+using System.Linq;
 
 public abstract partial class Character : CharacterBody3D
 {
     [Export] private StatResource[] stats;
-    
+
     [ExportGroup("Required Nodes")]
     [Export] public AnimationPlayer AnimationPlayerNode {get; private set;}
     [Export] public Sprite3D Sprite3DNode {get; private set;}
@@ -27,7 +29,27 @@ public abstract partial class Character : CharacterBody3D
 
     private void HandleHurtboxEntered(Area3D area)
     {
-        GD.Print(area.Name);
+        StatResource health = GetStatResource(Stat.Health);
+
+        GD.Print(health.StatValue);
+    }
+
+    public StatResource GetStatResource(Stat stat)
+    {
+        return stats.Where((element) => element.StatType == stat).FirstOrDefault();
+/*      
+        StatResource result = null;
+
+        foreach (StatResource element in stats)
+        {
+            if (element.StatType == stat)
+            {
+                result = element;
+            }
+        }
+         
+        return result;
+ */    
     }
 
     public void Flip()
