@@ -1,9 +1,10 @@
-[gd_scene load_steps=117 format=3 uid="uid://wg55g56a6yfb"]
+[gd_scene load_steps=120 format=3 uid="uid://wg55g56a6yfb"]
 
 [ext_resource type="Texture2D" uid="uid://ca6salm3p6kie" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="1_fle1x"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_vddrj"]
 [ext_resource type="Texture2D" uid="uid://denudk3hmfmuq" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_013.png" id="2_dyllb"]
 [ext_resource type="Texture2D" uid="uid://ctfdesp755ldq" path="res://Assets/Sprites/Characters/Enemy Knight/Attack/0_Demons_of_Darkness_Slashing_011.png" id="2_hk80d"]
+[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_lu3p7"]
 [ext_resource type="Texture2D" uid="uid://cfp6fxnpc1c5" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="4_pg7am"]
 [ext_resource type="Texture2D" uid="uid://w6as3i6dx10" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_002.png" id="5_g7ye2"]
 [ext_resource type="Texture2D" uid="uid://5kjpxpot50ku" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_003.png" id="6_y3jq7"]
@@ -106,6 +107,16 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyPatrolState.cs" id="104_si25v"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyChaseState.cs" id="105_qgvxu"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_k285r"]
+
+[sub_resource type="Resource" id="Resource_0un6y"]
+script = ExtResource("2_lu3p7")
+StatType = 0
+StatValue = 20.0
+
+[sub_resource type="Resource" id="Resource_fejm2"]
+script = ExtResource("2_lu3p7")
+StatType = 1
+StatValue = 4.0
 
 [sub_resource type="Animation" id="Animation_a2gh4"]
 resource_name = "Attack"
@@ -240,6 +251,7 @@ collision_mask = 3
 floor_max_angle = 1.55334
 floor_snap_length = 0.2
 script = ExtResource("1_vddrj")
+stats = Array[Object]([SubResource("Resource_0un6y"), SubResource("Resource_fejm2")])
 AnimationPlayerNode = NodePath("AnimationPlayer")
 Sprite3DNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")

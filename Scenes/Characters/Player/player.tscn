@@ -1,7 +1,8 @@
-[gd_scene load_steps=75 format=3 uid="uid://b2kblijq0hpvy"]
+[gd_scene load_steps=78 format=3 uid="uid://b2kblijq0hpvy"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_f52qr"]
 [ext_resource type="Texture2D" uid="uid://cn81nr088ux7a" path="res://Assets/Sprites/Characters/Player/Running/Running_005.png" id="1_hv3m4"]
+[ext_resource type="Script" path="res://Scripts/Resources/StatResource.cs" id="2_amsxu"]
 [ext_resource type="Texture2D" uid="uid://bcr302agnxgwe" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="2_ukslh"]
 [ext_resource type="Texture2D" uid="uid://db8yuljn4g18l" path="res://Assets/Sprites/Characters/Player/Slashing/Slashing_011.png" id="2_xxm1d"]
 [ext_resource type="Texture2D" uid="uid://box281x6i3dob" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="3_axc6a"]
@@ -66,6 +67,16 @@
 [ext_resource type="Texture2D" uid="uid://qet056w86o8s" path="res://Assets/Sprites/Characters/Player/Slashing/Slashing_009.png" id="60_qdpr5"]
 [ext_resource type="Texture2D" uid="uid://cmr8amnn1r3hc" path="res://Assets/Sprites/Characters/Player/Slashing/Slashing_010.png" id="61_oaef6"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerAttackState.cs" id="66_wm8dy"]
+
+[sub_resource type="Resource" id="Resource_cu1ay"]
+script = ExtResource("2_amsxu")
+StatType = 0
+StatValue = 100.0
+
+[sub_resource type="Resource" id="Resource_ri08r"]
+script = ExtResource("2_amsxu")
+StatType = 1
+StatValue = 3.0
 
 [sub_resource type="Animation" id="Animation_ec7xr"]
 resource_name = "Dash"
@@ -169,6 +180,7 @@ collision_mask = 5
 floor_max_angle = 1.55334
 floor_snap_length = 0.2
 script = ExtResource("1_f52qr")
+stats = Array[Object]([SubResource("Resource_cu1ay"), SubResource("Resource_ri08r")])
 AnimationPlayerNode = NodePath("AnimationPlayer")
 Sprite3DNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
