@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b2kblijq0hpvy"]
+[gd_scene load_steps=75 format=3 uid="uid://b2kblijq0hpvy"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_f52qr"]
 [ext_resource type="Texture2D" uid="uid://cn81nr088ux7a" path="res://Assets/Sprites/Characters/Player/Running/Running_005.png" id="1_hv3m4"]
@@ -160,6 +160,9 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yiwoq"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qepg1"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "Sprite3DNode", "StateMachineNode")]
 collision_layer = 2
 collision_mask = 5
@@ -209,3 +212,11 @@ one_shot = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)
 shape = SubResource("CapsuleShape3D_yiwoq")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.809832, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_qepg1")
