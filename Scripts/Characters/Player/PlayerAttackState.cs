@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Channels;
 
 public partial class PlayerAttackState : PlayerState
 {
@@ -37,6 +38,12 @@ public partial class PlayerAttackState : PlayerState
 
     private void PerformHit()
     {
-        GD.Print("perform hit");
+        Vector3 newPosition = characterNode.Sprite3DNode.FlipH ?
+            Vector3.Left :
+            Vector3.Right;
+        float distanceMultiplier = 0.75f;
+        newPosition *= distanceMultiplier;
+
+        characterNode.HitboxNode.Position = newPosition;
     }
 }
