@@ -128,10 +128,24 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
+"times": PackedFloat32Array(0, 0.0833, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("45_5j24c"), ExtResource("46_krgju"), ExtResource("47_gmghe"), ExtResource("48_y6qt1"), ExtResource("49_ajw38"), ExtResource("50_sq22h"), ExtResource("51_xev5r"), ExtResource("52_j2n1a"), ExtResource("53_y5cxn"), ExtResource("54_78iu1"), ExtResource("55_vqbn0"), ExtResource("2_hk80d")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../StateMachine/AttackState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2499),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PerformHit"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ubgso"]
@@ -243,7 +257,7 @@ _data = {
 radius = 6.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_he5ng"]
-radius = 1.4
+radius = 1.15
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nnw1u"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -338,3 +352,4 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_nnw1u")
+disabled = true
