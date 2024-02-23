@@ -93,6 +93,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("39_diiur"), ExtResource("40_6acqt"), ExtResource("41_lfuvf"), ExtResource("42_jwcjx"), ExtResource("43_apjmj"), ExtResource("44_kb2s7"), ExtResource("45_707yr"), ExtResource("46_1g8dn"), ExtResource("47_nek7p"), ExtResource("48_4q0tq"), ExtResource("49_mx7xy"), ExtResource("50_gdb3c")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/AttackState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2499),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PerformHit"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4umwi"]
 resource_name = "Attack2"
@@ -104,10 +118,24 @@ tracks/0/path = NodePath("Sprite3D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
+"times": PackedFloat32Array(0, 0.0833333, 0.1666, 0.2499, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("51_ewgj0"), ExtResource("52_nd406"), ExtResource("53_m07i8"), ExtResource("54_6pkpm"), ExtResource("55_jolum"), ExtResource("56_ser6t"), ExtResource("57_erqyq"), ExtResource("58_153mk"), ExtResource("59_08nvl"), ExtResource("60_qdpr5"), ExtResource("61_oaef6"), ExtResource("2_xxm1d")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/AttackState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2499),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PerformHit"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ec7xr"]
@@ -188,7 +216,7 @@ StateMachineNode = NodePath("StateMachine")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.0025
 texture_filter = 0
-texture = ExtResource("2_xxm1d")
+texture = ExtResource("52_nd406")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
