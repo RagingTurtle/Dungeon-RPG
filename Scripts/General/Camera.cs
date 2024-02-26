@@ -15,7 +15,7 @@ public partial class Camera : Camera3D
     {
         Reparent(target);
 
-        Position = positionFromTarget;
+        Position = positionFromTarget; 
     }
 
 }
