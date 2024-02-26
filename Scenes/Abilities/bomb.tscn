@@ -1,0 +1,86 @@
+[gd_scene load_steps=15 format=3 uid="uid://dciraoix5u57g"]
+
+[ext_resource type="Texture2D" uid="uid://b6djvsexo78ky" path="res://Assets/Sprites/Effects/Explosion/10.png" id="1_w3s18"]
+[ext_resource type="Texture2D" uid="uid://drmrskyyo6f0t" path="res://Assets/Sprites/Effects/Explosion/Bomb.png" id="2_3ohps"]
+[ext_resource type="Texture2D" uid="uid://bg7de23xv1ja4" path="res://Assets/Sprites/Effects/Explosion/1.png" id="3_pxiq7"]
+[ext_resource type="Texture2D" uid="uid://cffnq2x6sdtr8" path="res://Assets/Sprites/Effects/Explosion/2.png" id="4_63l4d"]
+[ext_resource type="Texture2D" uid="uid://djtren3dalfdx" path="res://Assets/Sprites/Effects/Explosion/3.png" id="5_b24ap"]
+[ext_resource type="Texture2D" uid="uid://cvjc640j7llqt" path="res://Assets/Sprites/Effects/Explosion/4.png" id="6_g18bi"]
+[ext_resource type="Texture2D" uid="uid://b46worc018iel" path="res://Assets/Sprites/Effects/Explosion/5.png" id="7_ar5ne"]
+[ext_resource type="Texture2D" uid="uid://baewdftxurfts" path="res://Assets/Sprites/Effects/Explosion/6.png" id="8_ovk3r"]
+[ext_resource type="Texture2D" uid="uid://dh1yb5dl83i8x" path="res://Assets/Sprites/Effects/Explosion/7.png" id="9_tnb7v"]
+[ext_resource type="Texture2D" uid="uid://lb20pfby4r4h" path="res://Assets/Sprites/Effects/Explosion/8.png" id="10_dtich"]
+[ext_resource type="Texture2D" uid="uid://dpumg2siyvopa" path="res://Assets/Sprites/Effects/Explosion/9.png" id="11_akcr1"]
+
+[sub_resource type="Animation" id="Animation_fwlit"]
+resource_name = "Expand"
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_3ohps")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.02]
+}
+
+[sub_resource type="Animation" id="Animation_etgro"]
+resource_name = "Explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_pxiq7"), ExtResource("4_63l4d"), ExtResource("5_b24ap"), ExtResource("6_g18bi"), ExtResource("7_ar5ne"), ExtResource("8_ovk3r"), ExtResource("9_tnb7v"), ExtResource("10_dtich"), ExtResource("11_akcr1"), ExtResource("1_w3s18")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.02]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjrmx"]
+_data = {
+"Expand": SubResource("Animation_fwlit"),
+"Explosion": SubResource("Animation_etgro")
+}
+
+[node name="Bomb" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.02
+texture = ExtResource("1_w3s18")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qjrmx")
+}
+autoplay = "Expand"
