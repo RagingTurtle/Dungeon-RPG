@@ -3,6 +3,21 @@ using System;
 
 public partial class Player : Character
 {
+    public override void _Ready()
+    {
+        base._Ready();
+
+        GameEvents.OnReward += HandleReward;
+    }
+
+    private void HandleReward(RewardResource resource)
+    {
+        StatResource targetStat = GetStatResource(resource.TargetSat);
+
+        targetStat.StatValue += resource.Amount;
+    }
+
+
     public override void _Input(InputEvent @event)
     {
         direction = Input.GetVector(
