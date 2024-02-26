@@ -20,8 +20,9 @@ public partial class UIController : Control
     private void HandleStartPressed()
     {
         GetTree().Paused = false;
-        
+
         containers[ContainerType.Start].Visible = false;
+        containers[ContainerType.Stats].Visible = true;
 
         GameEvents.RaiseStartGame();
     }
