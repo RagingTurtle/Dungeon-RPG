@@ -343,7 +343,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)
 shape = SubResource("CapsuleShape3D_8wfks")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
 
 [node name="ChaseArea" type="Area3D" parent="."]
 collision_layer = 0

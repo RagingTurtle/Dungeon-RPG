@@ -274,13 +274,19 @@ script = ExtResource("32_2ibfr")
 [node name="MoveState" type="Node" parent="StateMachine"]
 script = ExtResource("33_eslxn")
 
-[node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashTimerNode")]
+[node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashTimerNode", "cooldownTimerNode")]
 script = ExtResource("40_38bak")
-dashTimerNode = NodePath("Timer")
+dashTimerNode = NodePath("DurationTimer")
 bombScene = ExtResource("83_iokxg")
+cooldownTimerNode = NodePath("CooldownTimer")
 
-[node name="Timer" type="Timer" parent="StateMachine/DashState"]
+[node name="DurationTimer" type="Timer" parent="StateMachine/DashState"]
+process_mode = 3
 wait_time = 0.4
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="StateMachine/DashState"]
+wait_time = 3.0
 one_shot = true
 
 [node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("comboTimerNode")]

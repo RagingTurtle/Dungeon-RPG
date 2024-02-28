@@ -5,7 +5,7 @@ using System.Linq;
 public partial class StateMachine : Node
 {
     [Export] private Node currentState;
-    [Export] private Node[] states;
+    [Export] private CharacterState[] states;
 
     public override void _Ready()
     {
@@ -14,7 +14,7 @@ public partial class StateMachine : Node
 
     public void SwitchState<T>()
     {
-        Node newState = states.Where((state) => state is T).FirstOrDefault();
+        CharacterState newState = states.Where((state) => state is T).FirstOrDefault();
 /*
         Node newState = null;
         foreach (Node state in states) {
@@ -26,6 +26,8 @@ public partial class StateMachine : Node
         if (newState == null) {return;}
 
         if (currentState is T) {return;}
+
+        if (!newState.CanTransition()) { return; }
 
         currentState.Notification(GameConstants.NOTIFICATION_EXIT_STATE);
         currentState = newState;
