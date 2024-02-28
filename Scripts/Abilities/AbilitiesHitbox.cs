@@ -5,6 +5,6 @@ public partial class AbilitiesHitbox : Area3D, IHitbox
 {
     public float GetDamage()
     {
-        return GetOwner<Bomb>().Damage;
+        return GetOwner<Ability>().Damage;
     }
 }

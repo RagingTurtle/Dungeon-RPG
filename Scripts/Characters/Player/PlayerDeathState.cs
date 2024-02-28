@@ -10,7 +10,7 @@ public partial class PlayerDeathState : PlayerState
         characterNode.AnimationPlayerNode.AnimationFinished += HandleAnimationFinished;
     }
 
-    private void HandleAnimationFinished(StringName animName)
+    private void HandleAnimationFinished(StringName animationName)
     {
         GameEvents.RaiseEndGame();
 

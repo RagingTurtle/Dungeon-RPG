@@ -23,7 +23,7 @@ public partial class EnemyAttackState : EnemyState
 
     }
 
-    private void HandleAnimationFinished(StringName animName)
+    private void HandleAnimationFinished(StringName animationName)
     {
         characterNode.ToggleHitbox(true);
 

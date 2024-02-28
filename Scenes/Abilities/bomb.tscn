@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dh1yb5dl83i8x" path="res://Assets/Sprites/Effects/Explosion/7.png" id="9_tnb7v"]
 [ext_resource type="Texture2D" uid="uid://lb20pfby4r4h" path="res://Assets/Sprites/Effects/Explosion/8.png" id="10_dtich"]
 [ext_resource type="Texture2D" uid="uid://dpumg2siyvopa" path="res://Assets/Sprites/Effects/Explosion/9.png" id="11_akcr1"]
-[ext_resource type="Script" path="res://Scripts/Characters/AbilitiesHitbox.cs" id="13_yt1pl"]
+[ext_resource type="Script" path="res://Scripts/Abilities/AbilitiesHitbox.cs" id="13_i8des"]
 
 [sub_resource type="Animation" id="Animation_fwlit"]
 resource_name = "Expand"
@@ -90,9 +90,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_4br8l"]
 radius = 4.0
 
-[node name="Bomb" type="Node3D" node_paths=PackedStringArray("playerNode")]
+[node name="Bomb" type="Node3D" node_paths=PackedStringArray("animationPlayerNode")]
 script = ExtResource("1_smolu")
-playerNode = NodePath("AnimationPlayer")
+animationPlayerNode = NodePath("AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.02
@@ -107,7 +107,7 @@ autoplay = "Expand"
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("13_yt1pl")
+script = ExtResource("13_i8des")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_4br8l")

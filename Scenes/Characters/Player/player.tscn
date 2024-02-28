@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://b2kblijq0hpvy"]
+[gd_scene load_steps=97 format=3 uid="uid://b2kblijq0hpvy"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.cs" id="1_f52qr"]
 [ext_resource type="Texture2D" uid="uid://cn81nr088ux7a" path="res://Assets/Sprites/Characters/Player/Running/Running_005.png" id="1_hv3m4"]
@@ -85,6 +85,7 @@
 [ext_resource type="Texture2D" uid="uid://b3g13vynhdgeq" path="res://Assets/Sprites/Characters/Player/Dying/Dying_014.png" id="77_8uho3"]
 [ext_resource type="PackedScene" uid="uid://dciraoix5u57g" path="res://Scenes/Abilities/bomb.tscn" id="83_iokxg"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerDeathState.cs" id="83_jmhdg"]
+[ext_resource type="PackedScene" uid="uid://b16ccuyd63gdb" path="res://Scenes/Abilities/lightning.tscn" id="85_mx0py"]
 [ext_resource type="Script" path="res://Scripts/Characters/AttackHitbox.cs" id="86_7st5g"]
 
 [sub_resource type="Animation" id="Animation_iw6jp"]
@@ -274,6 +275,7 @@ one_shot = true
 [node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("comboTimerNode")]
 script = ExtResource("66_wm8dy")
 comboTimerNode = NodePath("Timer")
+lightningScene = ExtResource("85_mx0py")
 
 [node name="Timer" type="Timer" parent="StateMachine/AttackState"]
 wait_time = 2.0
@@ -288,7 +290,7 @@ shape = SubResource("CapsuleShape3D_yiwoq")
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("86_7st5g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
