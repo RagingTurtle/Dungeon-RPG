@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://wg55g56a6yfb"]
+[gd_scene load_steps=126 format=3 uid="uid://wg55g56a6yfb"]
 
 [ext_resource type="Texture2D" uid="uid://ca6salm3p6kie" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="1_fle1x"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_vddrj"]
@@ -110,6 +110,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyAttackState.cs" id="106_k285r"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyDeathState.cs" id="108_0t5d5"]
 [ext_resource type="Script" path="res://Scripts/Characters/AttackHitbox.cs" id="109_jct5e"]
+[ext_resource type="Script" path="res://Scripts/Characters/Enemy/EnemyStunState.cs" id="110_63gnj"]
 
 [sub_resource type="Resource" id="Resource_0un6y"]
 script = ExtResource("2_lu3p7")
@@ -237,7 +238,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_l1mde"]
-resource_name = "TakeHit"
+resource_name = "Stun"
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -259,7 +260,7 @@ _data = {
 "Idle": SubResource("Animation_fycpy"),
 "Move": SubResource("Animation_bevd4"),
 "RESET": SubResource("Animation_4pqp4"),
-"TakeHit": SubResource("Animation_l1mde")
+"Stun": SubResource("Animation_l1mde")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wfks"]
@@ -304,7 +305,7 @@ libraries = {
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("101_q50sl")]
 currentState = NodePath("IdleState")
-states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState"), NodePath("DeathState")]
+states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState"), NodePath("DeathState"), NodePath("StunState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("45_4rp4t")
@@ -332,6 +333,9 @@ script = ExtResource("106_k285r")
 
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("108_0t5d5")
+
+[node name="StunState" type="Node" parent="StateMachine"]
+script = ExtResource("110_63gnj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291883, 0)
